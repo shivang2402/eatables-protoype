@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:eatables_app/models/Cart.dart';
+import 'package:flutter/material.dart';
 
 import 'components/body.dart';
 import 'components/check_out_card.dart';
@@ -19,7 +19,7 @@ class CartScreen extends StatelessWidget {
     return AppBar(
       title: Column(
         children: [
-          Text(
+          const Text(
             "Your Cart",
             style: TextStyle(color: Colors.black),
           ),

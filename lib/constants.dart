@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:eatables_app/size_config.dart';
+import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
@@ -21,6 +21,9 @@ final headingStyle = TextStyle(
 );
 
 const defaultDuration = Duration(milliseconds: 250);
+
+const razorpayId = "rzp_test_aqRrSZmCJ6Z4pC";
+const razorpayKey = "Uv7LvJSJ35aW0qaZE9XkW3bK";
 
 // Form Error
 final RegExp emailValidatorRegExp =

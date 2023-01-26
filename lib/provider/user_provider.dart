@@ -12,20 +12,29 @@ class Users {
 class UserProvider with ChangeNotifier {
   final List<Users> _users = [];
 
-  String _name = "", _email = "", _contact = "", _password = "";
+  String _name = "", _email = "", _contact = "", _password = "",_id="";
   String get getEmail {
     return _email;
   }
-
+  String get getName {
+    return _name;
+  }
   String get getPassword {
     return _password;
+  }
+
+  String get getContact {
+    return _contact;
   }
 
   set setEmail(String email) {
     _email = email;
     notifyListeners();
   }
-
+set setStudentId(String id){
+    _id=id;
+    notifyListeners();
+}
   set setContact(String name) {
     _contact = name;
     notifyListeners();

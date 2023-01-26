@@ -1,19 +1,15 @@
-import 'dart:convert';
-import 'dart:convert';
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:eatables_app/components/custom_surfix_icon.dart';
 import 'package:eatables_app/components/form_error.dart';
 import 'package:eatables_app/helper/keyboard.dart';
 import 'package:eatables_app/screens/forgot_password/forgot_password_screen.dart';
 import 'package:eatables_app/screens/login_success/login_success_screen.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../../../components/default_button.dart';
 import '../../../constants.dart';
+import '../../../provider/user_provider.dart';
 import '../../../size_config.dart';
 
 class SignForm extends StatefulWidget {
@@ -28,6 +24,7 @@ class _SignFormState extends State<SignForm> {
   String? email;
   String? password;
   bool? remember = false;
+
   final List<String?> errors = [];
 
   void addError({String? error}) {
@@ -48,6 +45,7 @@ class _SignFormState extends State<SignForm> {
 
   @override
   Widget build(BuildContext context) {
+    var userProvider = Provider.of<UserProvider>(context, listen: false);
     return Form(
       key: _formKey,
       child: Column(
@@ -104,13 +102,23 @@ class _SignFormState extends State<SignForm> {
                 var nextPage = "false";
                 try {
                   Response response = await dio.post(url, data: jsonData);
+                  print(
+                      "login ---------------------------------------------------------");
                   print(response.data);
-                  nextPage = response.data;
+                  userProvider.setStudentId = "${response.data["STUDENT_ID"]}";
+                  userProvider.setContact = "${response.data["CONTACT_NO"]}";
+                  userProvider.setEmail = "${response.data["EMAIL_ID"]}";
+                  userProvider.setName = "${response.data["NAME"]}";
+                  nextPage = "${response.data["validate"]}";
+                  print(nextPage);
+                  // Navigator.pushNamed(context, LoginSuccessScreen.routeName);
                 } catch (e) {
                   print(e);
                 }
 
                 // getHttp();
+                print("pop $nextPage");
+
                 if (nextPage == "true") {
                   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
                 } else {

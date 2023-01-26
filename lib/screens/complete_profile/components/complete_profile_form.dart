@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:eatables_app/components/custom_surfix_icon.dart';
 import 'package:eatables_app/components/default_button.dart';
 import 'package:eatables_app/components/form_error.dart';
 import 'package:eatables_app/screens/otp/otp_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
@@ -63,6 +63,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                     "email --------------------------------------------------------");
                 print(userProvider.getEmail);
                 print(userProvider.getPassword);
+                userProvider.setContact = phoneNumber!;
+                userProvider.setName = "${firstName!} ${lastName!}";
                 Dio dio = Dio();
 
                 String url = "$baseURL/register";
