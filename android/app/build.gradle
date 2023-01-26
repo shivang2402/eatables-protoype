@@ -60,7 +60,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled true
 //            useProguard true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -68,7 +68,12 @@ android {
 flutter {
     source '../..'
 }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.razorpay:checkout:1.6.26'
 }
