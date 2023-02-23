@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:eatables_app/components/rounded_icon_btn.dart';
-import 'package:eatables_app/models/Product.dart';
+import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
+import '../../../provider/product.dart';
 import '../../../size_config.dart';
 
 class ColorDots extends StatelessWidget {
@@ -22,13 +22,13 @@ class ColorDots extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
-          ...List.generate(
-            product.colors.length,
-            (index) => ColorDot(
-              color: product.colors[index],
-              isSelected: index == selectedColor,
-            ),
-          ),
+          // ...List.generate(
+          //   product.colors.length,
+          //   (index) => ColorDot(
+          //     color: product.colors[index],
+          //     isSelected: index == selectedColor,
+          //   ),
+          // ),
           Spacer(),
           RoundedIconBtn(
             icon: Icons.remove,

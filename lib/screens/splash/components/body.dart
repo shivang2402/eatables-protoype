@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:eatables_app/constants.dart';
-import 'package:eatables_app/screens/sign_in/sign_in_screen.dart';
+import 'package:eatables_app/screens/home/home_screen.dart';
 import 'package:eatables_app/size_config.dart';
+import 'package:flutter/material.dart';
 
-// This is the best practice
-import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
+import '../components/splash_content.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -73,7 +72,11 @@ class _BodyState extends State<Body> {
                       text: "Continue",
                       press: () {
                         print('hello world ');
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        // Navigator.pushNamed(context, ProfileScreen.routeName);
+                        // Navigator.pushNamed(context, CartScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.routeName);
+
+                        // Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),
                     Spacer(),

@@ -1,13 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:eatables_app/components/product_card.dart';
-import 'package:eatables_app/models/Product.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../provider/products.dart';
 import '../../../size_config.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var data = Provider.of<Products>(context, listen: true).getData(false);
     return Column(
       children: [
         Padding(
@@ -21,10 +23,10 @@ class PopularProducts extends StatelessWidget {
           child: Row(
             children: [
               ...List.generate(
-                demoProducts.length,
+                data.length,
                 (index) {
-                  if (demoProducts[index].isPopular)
-                    return ProductCard(product: demoProducts[index]);
+                  if (data[index].isFavorite)
+                    return ProductCard(product: data[index]);
 
                   return SizedBox
                       .shrink(); // here by default width and height is 0

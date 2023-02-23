@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:eatables_app/models/Product.dart';
 
 import '../../../constants.dart';
+import '../../../provider/product.dart';
 import '../../../size_config.dart';
 
 class ProductImages extends StatefulWidget {
@@ -28,7 +28,7 @@ class _ProductImagesState extends State<ProductImages> {
             aspectRatio: 1,
             child: Hero(
               tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images[selectedImage]),
+              child: Image.memory(widget.product.imageUrl),
             ),
           ),
         ),
@@ -36,8 +36,9 @@ class _ProductImagesState extends State<ProductImages> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ...List.generate(widget.product.images.length,
-                (index) => buildSmallProductPreview(index)),
+            buildSmallProductPreview(0),
+            // ...List.generate(widget.product.images.length,
+            //     (index) => buildSmallProductPreview(index)),
           ],
         )
       ],
@@ -63,7 +64,7 @@ class _ProductImagesState extends State<ProductImages> {
           border: Border.all(
               color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image.memory(widget.product.imageUrl),
       ),
     );
   }

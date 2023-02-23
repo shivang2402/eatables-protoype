@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:eatables_app/screens/add_fooditem/add_fooditem_screen.dart';
 import 'package:eatables_app/screens/cart/cart_screen.dart';
 import 'package:eatables_app/screens/complete_profile/complete_profile_screen.dart';
 import 'package:eatables_app/screens/details/details_screen.dart';
@@ -9,6 +9,7 @@ import 'package:eatables_app/screens/otp/otp_screen.dart';
 import 'package:eatables_app/screens/profile/profile_screen.dart';
 import 'package:eatables_app/screens/sign_in/sign_in_screen.dart';
 import 'package:eatables_app/screens/splash/splash_screen.dart';
+import 'package:flutter/widgets.dart';
 
 import 'screens/sign_up/sign_up_screen.dart';
 
@@ -16,6 +17,7 @@ import 'screens/sign_up/sign_up_screen.dart';
 // All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
+  // SplashScreen.routeName: (context) => CartScreen(),
   SignInScreen.routeName: (context) => SignInScreen(),
   ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
   LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
