@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dio/dio.dart';
+import 'package:eatables_app/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:eatables_app/components/default_button.dart';
 import 'package:eatables_app/size_config.dart';
@@ -72,7 +73,7 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin2FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -87,7 +88,7 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin3FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -103,7 +104,7 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin4FocusNode,
                   obscureText: true,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
@@ -143,6 +144,9 @@ class _OtpFormState extends State<OtpForm> {
                 Response response = await dio.post(url, data: jsonData);
                 print(response.data);
                 nextPage = response.data;
+                if (nextPage == "true") {
+                  Navigator.of(context).pushNamed(HomeScreen.routeName);
+                }
               } catch (e) {
                 print(e);
               }
