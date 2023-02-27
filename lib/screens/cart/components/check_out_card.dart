@@ -102,28 +102,6 @@ class _CheckoutCardState extends State<CheckoutCard> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Row(
-            //   children: [
-            //     Container(
-            //       padding: const EdgeInsets.all(10),
-            //       height: getProportionateScreenWidth(40),
-            //       width: getProportionateScreenWidth(40),
-            //       decoration: BoxDecoration(
-            //         color: const Color(0xFFF5F6F9),
-            //         borderRadius: BorderRadius.circular(10),
-            //       ),
-            //       child: SvgPicture.asset("assets/icons/receipt.svg"),
-            //     ),
-            //     const Spacer(),
-            //     const Text("Add voucher code"),
-            //     const SizedBox(width: 10),
-            //     const Icon(
-            //       Icons.arrow_forward_ios,
-            //       size: 12,
-            //       color: kTextColor,
-            //     )
-            //   ],
-            // ),
             SizedBox(height: getProportionateScreenHeight(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -176,7 +154,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           'name': 'Eatables ',
                           'order_id': "${response.data['id']}",
                           // Generate order_id using Orders API
-                          'description': 'Fine T-Shirt',
+                          'description': jsonEncode(msg),
                           'timeout': 180,
                           // in seconds
                           'prefill': {

@@ -1,8 +1,12 @@
 import 'package:eatables_app/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
+import '../../../provider/cart_provider.dart';
 import '../../../size_config.dart';
+import '../../cart/cart_screen.dart';
+import '../../home/components/icon_btn_with_counter.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double rating;
@@ -14,6 +18,8 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cart = context.watch<CartProvider>();
+
     return SafeArea(
       child: Padding(
         padding:
@@ -56,10 +62,14 @@ class CustomAppBar extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  // SvgPicture.asset("assets/icons/Star Icon.svg"),
                 ],
               ),
-            )
+            ),
+            IconBtnWithCounter(
+              svgSrc: "assets/icons/Cart Icon.svg",
+              numOfitem: cart.itemCount,
+              press: () => Navigator.pushNamed(context, CartScreen.routeName),
+            ),
           ],
         ),
       ),

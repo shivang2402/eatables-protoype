@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/io.dart';
-
 import '../constants.dart';
 import 'product.dart';
 
@@ -15,16 +13,23 @@ class Products with ChangeNotifier {
       StreamController<String>();
   StreamSink<String> get counterSink => _counterController.sink;
   Stream<String> get counterStream => _counterController.stream;
+  List<Product> getCategory(String category) {
+    List<Product> res = [];
+    res = _data.map((e) => e['category'] == category).toList() as List<Product>;
+    return res;
+  }
 
   List<Product> get data {
     return [..._data];
   }
 
-  List<Product> getStreamData(String str) {
-    var temp = jsonDecode(str);
-    print(temp);
+  List<Product> getStreamData(dynamic str) {
+    // print("str1");
+
+    var temp = jsonDecode(str + "");
+    // print(temp);
     var resMap = temp["data"] as List;
-    print(resMap);
+    // print(resMap);
     resMap.forEach((element) {
       // print(element);
       List<int> intList = [
@@ -32,14 +37,15 @@ class Products with ChangeNotifier {
       ];
 
       _data.add(Product(
-        title: element["title"],
-        imageUrl: Uint8List.fromList(intList),
-        id: int.tryParse(element["id"].toString()) ?? 0,
-        description: element["description"],
-        price: double.tryParse(element["price"].toString()) ?? 0,
-      ));
+          title: element["title"],
+          imageUrl: Uint8List.fromList(intList),
+          id: int.tryParse(element["id"].toString()) ?? 0,
+          description: element["description"],
+          price: double.tryParse(element["price"].toString()) ?? 0,
+          category: element['category']));
     });
-    return [...data];
+
+    return [..._data];
   }
 
   Stream getStream(IOWebSocketChannel channel) {
@@ -66,12 +72,12 @@ class Products with ChangeNotifier {
           ];
 
           _data.add(Product(
-            title: element["title"],
-            imageUrl: Uint8List.fromList(intList),
-            id: int.tryParse(element["id"].toString()) ?? 0,
-            description: element["description"],
-            price: double.tryParse(element["price"].toString()) ?? 0,
-          ));
+              title: element["title"],
+              imageUrl: Uint8List.fromList(intList),
+              id: int.tryParse(element["id"].toString()) ?? 0,
+              description: element["description"],
+              price: double.tryParse(element["price"].toString()) ?? 0,
+              category: element['category']));
         });
       },
       onError: (error) => print(error),
@@ -88,12 +94,10 @@ class Products with ChangeNotifier {
       listener.cancel();
     };
     return controller.stream;
-
-    // return [..._data];
   }
 
   Future<List<Product>> fetchData() async {
-    Dio dio = await Dio();
+    Dio dio = Dio();
 
     String url = "$baseURL/item/displayItem";
     Response response = await dio.post(url);
@@ -107,12 +111,12 @@ class Products with ChangeNotifier {
       ];
 
       _data.add(Product(
-        title: element["title"],
-        imageUrl: Uint8List.fromList(intList),
-        id: int.tryParse(element["id"].toString()) ?? 0,
-        description: element["description"],
-        price: double.tryParse(element["price"].toString()) ?? 0,
-      ));
+          title: element["title"],
+          imageUrl: Uint8List.fromList(intList),
+          id: int.tryParse(element["id"].toString()) ?? 0,
+          description: element["description"],
+          price: double.tryParse(element["price"].toString()) ?? 0,
+          category: element['category']));
     }
     print("data");
     print(data);
@@ -121,29 +125,8 @@ class Products with ChangeNotifier {
   }
 
   List<Product> getData(bool favs) {
-    // /item/displayItem
-
     fetchData();
 
-    // print("websocket data 323 --------------------");
-    // // final channel = WebSocketChannel.connect(
-    // //   Uri.parse('ws://10.0.2.2:8080'),
-    // // );
-    // final channel = IOWebSocketChannel.connect('ws://10.0.2.2:8080');
-    // var data = {
-    //   'type': 'getData',
-    //   'data': {'id': 123, 'name': 'John Doe'}
-    // };
-    // print(data);
-    // channel.sink.add(jsonEncode(data));
-    //
-    // channel.stream.listen(
-    //   (data) {
-    //     print("websocket data --------------------");
-    //     print(data);
-    //   },
-    //   onError: (error) => print(error),
-    // );
     return !favs
         ? [..._data]
         : [..._data.where((element) => element.isFavorite)];

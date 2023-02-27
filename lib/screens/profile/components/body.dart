@@ -1,4 +1,3 @@
-import 'package:eatables_app/screens/add_fooditem/add_fooditem_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'profile_menu.dart';
@@ -38,7 +37,6 @@ class Body extends StatelessWidget {
             icon: "assets/icons/Log out.svg",
             press: () {},
           ),
-
         ],
       ),
     );
