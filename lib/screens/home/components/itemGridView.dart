@@ -9,9 +9,15 @@ import '../../../provider/product.dart';
 import '../../../provider/products.dart';
 import '../../../size_config.dart';
 
-class ItemGridView extends StatelessWidget {
+class ItemGridView extends StatefulWidget {
   final bool showOnlyFavorites;
   ItemGridView({Key? key, required this.showOnlyFavorites}) : super(key: key);
+
+  @override
+  State<ItemGridView> createState() => _ItemGridViewState();
+}
+
+class _ItemGridViewState extends State<ItemGridView> {
   final IOWebSocketChannel channel =
       IOWebSocketChannel.connect('ws://10.0.2.2:8080');
 
@@ -26,6 +32,7 @@ class ItemGridView extends StatelessWidget {
     print(data2);
 
     channel.sink.add(jsonEncode(data2));
+    void dispose() {}
     // final data = productsData.getData(showOnlyFavorites);
     return StreamBuilder(
         // stream: productsData.getStream(channel),
