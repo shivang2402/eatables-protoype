@@ -37,14 +37,17 @@ class Orders with ChangeNotifier {
     _orders.insert(
         0,
         OrderItem(
-            id: DateTime.now().toString(),
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
             amount: total,
             products: products,
             date: DateTime.now()));
     notifyListeners();
   }
 
-  List<Map<String, dynamic>> toJson() {
-    return _orders.map((order) => order.toJson()).toList();
+  // List<Map<String, dynamic>> toJson() {
+  //   return _orders.map((order) => order.toJson()).toList();
+  // }
+  Map<String, dynamic> toJson() {
+    return _orders[0].toJson();
   }
 }

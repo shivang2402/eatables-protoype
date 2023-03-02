@@ -23,7 +23,9 @@ class CheckoutCard extends StatefulWidget {
 
 class _CheckoutCardState extends State<CheckoutCard> {
   final _razorpay = Razorpay();
-  var channel = IOWebSocketChannel.connect('ws://10.0.2.2:8080');
+  String ordersJSON = '';
+
+  var channel = IOWebSocketChannel.connect('ws://localhost:8080');
   var options = {
     'key': razorpayKey,
     'amount': 50000, //in the smallest currency sub-unit.
@@ -45,7 +47,12 @@ class _CheckoutCardState extends State<CheckoutCard> {
       // add more key-value pairs as needed
     };
     Response res = await dio.post(url, data: jsonData);
-    print("success");
+    print("success=-=-=-=-=-=-=-=-=-");
+    var msg = {
+      'type': "sendOrder",
+      'data': ordersJSON,
+    };
+    channel.sink.add(jsonEncode(msg));
     // Do something when payment succeeds
   }
 
@@ -126,11 +133,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                       //TODO : send order data
                       orders.addOrder(
                           cart.items.values.toList(), cart.totalAmount);
-                      var msg = {
-                        'type': "sendOrder",
-                        'data': orders.toJson(),
-                      };
-                      channel.sink.add(jsonEncode(msg));
+
                       Dio dio = Dio();
                       var userProvider =
                           Provider.of<UserProvider>(context, listen: false);
@@ -142,7 +145,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
 
                         // add more key-value pairs as needed
                       };
-
+                      ordersJSON = jsonEncode(orders.toJson());
                       try {
                         Response response = await dio.post(url, data: jsonData);
                         print("razorpay -----------------------------------");
@@ -154,7 +157,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           'name': 'Eatables ',
                           'order_id': "${response.data['id']}",
                           // Generate order_id using Orders API
-                          'description': jsonEncode(msg),
+                          'description': "kok",
                           'timeout': 180,
                           // in seconds
                           'prefill': {

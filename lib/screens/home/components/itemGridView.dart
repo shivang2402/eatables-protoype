@@ -20,10 +20,6 @@ class ItemGridView extends StatefulWidget {
 }
 
 class _ItemGridViewState extends State<ItemGridView> {
-<<<<<<< HEAD
-  final IOWebSocketChannel channel =
-      IOWebSocketChannel.connect('ws://10.0.2.2:8080');
-=======
   late WebSocketChannel _channel;
   late final StreamSubscription subscription;
   late final Stream stream;
@@ -34,8 +30,8 @@ class _ItemGridViewState extends State<ItemGridView> {
 
     // Create a WebSocket connection and listen for incoming messages
     _channel = IOWebSocketChannel.connect(
-      Uri.parse('ws://10.0.2.2:8080'),
-    );
+        // Uri.parse('ws://10.0.2.2:8080'),
+        Uri.parse('ws://localhost:8080'));
   }
 
   @override
@@ -45,7 +41,6 @@ class _ItemGridViewState extends State<ItemGridView> {
 
     super.dispose();
   }
->>>>>>> 7f15a6223d0b78e9a5ab8e5ae0e6882edec7f599
 
   @override
   Widget build(BuildContext context) {
@@ -58,18 +53,9 @@ class _ItemGridViewState extends State<ItemGridView> {
     List<Product> data3;
     print(data2);
 
-<<<<<<< HEAD
-    channel.sink.add(jsonEncode(data2));
-    void dispose() {}
-    // final data = productsData.getData(showOnlyFavorites);
-    return StreamBuilder(
-        // stream: productsData.getStream(channel),
-        stream: channel.stream,
-=======
     _channel.sink.add(jsonEncode(data2));
     return StreamBuilder<dynamic>(
         stream: _channel.stream,
->>>>>>> 7f15a6223d0b78e9a5ab8e5ae0e6882edec7f599
         builder: (context, snapshot) {
           // if (snapshot.hasData) {
           // print(";;;;;;;;;;;;;;;;;;;;;;;;;;;");
@@ -84,8 +70,11 @@ class _ItemGridViewState extends State<ItemGridView> {
           data3 = data.toList();
           return SizedBox(
             height: (MediaQuery.of(context).size.height -
-                    getProportionateScreenWidth(80) -
-                    38) *
+                    getProportionateScreenWidth(100) -
+                    // MediaQuery.of(context).padding.bottom -
+                    // MediaQuery.of(context).padding.top -
+
+                    80) *
                 0.9,
             //TODO :Change height
             child: snapshot.hasData
