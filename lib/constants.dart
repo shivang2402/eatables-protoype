@@ -36,7 +36,9 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
-const String baseURL = "http://localhost:3000";
+// const String baseURL = "http://localhost:3000";
+const String baseURL = "http://10.0.2.2:3000";
+
 final otpInputDecoration = InputDecoration(
   contentPadding:
       EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),

@@ -32,14 +32,11 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => const DetailsScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
-<<<<<<< HEAD
   EmptyScreen.routeName: (context) => const EmptyScreen(),
-  Notify.routeName: (context) => const Notify()
-=======
+  Notify.routeName: (context) => const Notify(),
   SetPasswordScreen.routeName: (context) => SetPasswordScreen(),
   CategoryScreen.routeName: (context) => CategoryScreen(),
   SingleCategoryProductsScreen.routeName: (context) =>
-      SingleCategoryProductsScreen(),
+      const SingleCategoryProductsScreen(),
   OrderHistory.routeName: (context) => OrderHistory(),
->>>>>>> 0ab0e612eb1affeb45477a69e5af7f2b32e99c0b
 };

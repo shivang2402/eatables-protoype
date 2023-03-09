@@ -45,8 +45,7 @@ class Orders with ChangeNotifier {
     _orders.insert(
         0,
         OrderItem(
-<<<<<<< HEAD
-          id: DateTime.now().toString(),
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
           amount: total,
           products: products,
           date: DateTime.now(),
@@ -58,12 +57,6 @@ class Orders with ChangeNotifier {
   setfcm_token(String token) {
     fcm_token = token;
 
-=======
-            id: DateTime.now().millisecondsSinceEpoch.toString(),
-            amount: total,
-            products: products,
-            date: DateTime.now()));
->>>>>>> 0ab0e612eb1affeb45477a69e5af7f2b32e99c0b
     notifyListeners();
   }
 

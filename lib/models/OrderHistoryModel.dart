@@ -64,22 +64,32 @@ class OrderHistoryList {
       // print(e);
       OrderHistoryModel temp = OrderHistoryModel();
       e.forEach((el) {
-        // print("el=-=-=-=-=-=-=-=-=-");
+        print("el=-=-=-=-=-=-=-=-=-");
 
-        // print(el['status']);
+        print(el);
 
         temp.status = setStatus(el['status'], temp.status);
+        print("lol");
         temp.itemsWithQuantity += "${el['item']} x ${el['quantity']} ,\n";
+        print("lol");
+
         temp.delivered += el['delivered'] as int;
+        print("lol");
+
         temp.tobedelivered += el['tobedelivered'] as int;
+        print("lol");
         temp.customerEmail = el['customerEmail'];
+        print("lol");
         temp.customerName = el['customerName'];
+        print("lol");
         temp.orderId = el['orderId'] as int;
+        print("lol");
         temp.amount += el['AMOUNT'] as int;
+        print("lol");
         temp.date = DateTime.fromMillisecondsSinceEpoch(el['orderId'] as int);
       });
-      // print("temp=-=-=-=-=-=-=-=-=-");
-      // print(temp);
+      print("temp=-=-=-=-=-=-=-=-=-");
+      print(temp);
       orderHistory.add(temp);
     });
     // data.values.forEach((element) {

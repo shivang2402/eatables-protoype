@@ -25,7 +25,9 @@ class _CheckoutCardState extends State<CheckoutCard> {
   final _razorpay = Razorpay();
   String ordersJSON = '';
 
-  var channel = IOWebSocketChannel.connect('ws://localhost:8080');
+  // var channel = IOWebSocketChannel.connect('ws://localhost:8080');
+  var channel = IOWebSocketChannel.connect('ws://10.0.2.2:8080');
+
   var options = {
     'key': razorpayKey,
     'amount': 50000, //in the smallest currency sub-unit.
@@ -157,11 +159,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           'name': 'Eatables ',
                           'order_id': "${response.data['id']}",
                           // Generate order_id using Orders API
-<<<<<<< HEAD
-                          'description': "ok",
-=======
                           'description': "kok",
->>>>>>> 0ab0e612eb1affeb45477a69e5af7f2b32e99c0b
                           'timeout': 180,
                           // in seconds
                           'prefill': {
