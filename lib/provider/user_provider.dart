@@ -12,7 +12,11 @@ class Users {
 class UserProvider with ChangeNotifier {
   final List<Users> _users = [];
 
-  String _name = "", _email = "", _contact = "", _password = "", _id = "";
+  String _name = "",
+      _email = "namanrajani16@gmail.com",
+      _contact = "",
+      _password = "",
+      _id = "";
   Map<String, dynamic> toJson() {
     return {
       'name': _name,

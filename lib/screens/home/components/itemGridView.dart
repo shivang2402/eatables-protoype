@@ -9,7 +9,6 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../components/product_card.dart';
 import '../../../provider/product.dart';
 import '../../../provider/products.dart';
-import '../../../size_config.dart';
 
 class ItemGridView extends StatefulWidget {
   final bool showOnlyFavorites;
@@ -30,8 +29,8 @@ class _ItemGridViewState extends State<ItemGridView> {
 
     // Create a WebSocket connection and listen for incoming messages
     _channel = IOWebSocketChannel.connect(
-      Uri.parse('ws://10.0.2.2:8080'),
-    );
+        // Uri.parse('ws://10.0.2.2:8080'),
+        Uri.parse('ws://localhost:8080'));
   }
 
   @override
@@ -68,14 +67,9 @@ class _ItemGridViewState extends State<ItemGridView> {
           data =
               snapshot.hasData ? productsData.getStreamData(snapshot.data) : [];
           data3 = data.toList();
-          return SizedBox(
-            height: (MediaQuery.of(context).size.height -
-                    getProportionateScreenWidth(80) -
-                    38) *
-                0.9,
-            //TODO :Change height
-            child: snapshot.hasData
-                ? GridView.builder(
+          return snapshot.hasData
+              ? Expanded(
+                  child: GridView.builder(
                     padding: const EdgeInsets.all(10),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -96,9 +90,9 @@ class _ItemGridViewState extends State<ItemGridView> {
                       );
                     },
                     itemCount: data.toSet().toList().length,
-                  )
-                : const Center(child: CircularProgressIndicator()),
-          );
+                  ),
+                )
+              : const Center(child: CircularProgressIndicator());
         });
   }
 }
