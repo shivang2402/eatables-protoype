@@ -9,7 +9,6 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../components/product_card.dart';
 import '../../../provider/product.dart';
 import '../../../provider/products.dart';
-import '../../../size_config.dart';
 
 class ItemGridView extends StatefulWidget {
   final bool showOnlyFavorites;
@@ -68,17 +67,9 @@ class _ItemGridViewState extends State<ItemGridView> {
           data =
               snapshot.hasData ? productsData.getStreamData(snapshot.data) : [];
           data3 = data.toList();
-          return SizedBox(
-            height: (MediaQuery.of(context).size.height -
-                    getProportionateScreenWidth(100) -
-                    // MediaQuery.of(context).padding.bottom -
-                    // MediaQuery.of(context).padding.top -
-
-                    80) *
-                0.9,
-            //TODO :Change height
-            child: snapshot.hasData
-                ? GridView.builder(
+          return snapshot.hasData
+              ? Expanded(
+                  child: GridView.builder(
                     padding: const EdgeInsets.all(10),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -99,9 +90,9 @@ class _ItemGridViewState extends State<ItemGridView> {
                       );
                     },
                     itemCount: data.toSet().toList().length,
-                  )
-                : const Center(child: CircularProgressIndicator()),
-          );
+                  ),
+                )
+              : const Center(child: CircularProgressIndicator());
         });
   }
 }

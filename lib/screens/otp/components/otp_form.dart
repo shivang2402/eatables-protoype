@@ -1,10 +1,8 @@
-import 'dart:math';
-
 import 'package:dio/dio.dart';
-import 'package:eatables_app/screens/home/home_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:eatables_app/components/default_button.dart';
+import 'package:eatables_app/screens/home/home_screen.dart';
 import 'package:eatables_app/size_config.dart';
+import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
@@ -38,6 +36,11 @@ class _OtpFormState extends State<OtpForm> {
     pin4FocusNode!.dispose();
   }
 
+  TextEditingController tec1 = TextEditingController();
+  TextEditingController tec2 = TextEditingController();
+  TextEditingController tec3 = TextEditingController();
+  TextEditingController tec4 = TextEditingController();
+
   void nextField(String value, FocusNode? focusNode) {
     if (value.length == 1) {
       focusNode!.requestFocus();
@@ -56,6 +59,7 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(
                 width: getProportionateScreenWidth(60),
                 child: TextFormField(
+                  controller: tec1,
                   autofocus: true,
                   obscureText: true,
                   style: const TextStyle(fontSize: 24),
@@ -71,6 +75,7 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(
                 width: getProportionateScreenWidth(60),
                 child: TextFormField(
+                  controller: tec2,
                   focusNode: pin2FocusNode,
                   obscureText: true,
                   style: const TextStyle(fontSize: 24),
@@ -86,6 +91,7 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(
                 width: getProportionateScreenWidth(60),
                 child: TextFormField(
+                  controller: tec3,
                   focusNode: pin3FocusNode,
                   obscureText: true,
                   style: const TextStyle(fontSize: 24),
@@ -102,6 +108,7 @@ class _OtpFormState extends State<OtpForm> {
               SizedBox(
                 width: getProportionateScreenWidth(60),
                 child: TextFormField(
+                  controller: tec4,
                   focusNode: pin4FocusNode,
                   obscureText: true,
                   style: const TextStyle(fontSize: 24),
@@ -126,7 +133,10 @@ class _OtpFormState extends State<OtpForm> {
             press: () async {
               String url = "$baseURL/otp/validate";
               Dio dio = Dio();
-
+              otp = tec1.value.text +
+                  tec2.value.text +
+                  tec3.value.text +
+                  tec4.value.text;
               print(otp);
               // print(address!);
 

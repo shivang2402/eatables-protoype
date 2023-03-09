@@ -11,6 +11,8 @@ import '../../../provider/user_provider.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  const CompleteProfileForm({super.key});
+
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
@@ -24,17 +26,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? address;
 
   void addError({String? error}) {
-    if (!errors.contains(error))
+    if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
+    }
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -68,7 +72,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                 Dio dio = Dio();
 
                 String url = "$baseURL/register";
-                print("lol");
+                // print("lol");
                 // print(address!);
 
                 // print(phoneNumber!);

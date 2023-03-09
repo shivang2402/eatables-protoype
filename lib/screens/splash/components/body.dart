@@ -1,11 +1,10 @@
 import 'package:eatables_app/constants.dart';
-import 'package:eatables_app/screens/home/home_screen.dart';
+import 'package:eatables_app/screens/splash/components/splash_content.dart';
 import 'package:eatables_app/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/default_button.dart';
-import '../../sign_in/sign_in_screen.dart';
-import '../components/splash_content.dart';
+import '../../history/order_history.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -73,9 +72,11 @@ class _BodyState extends State<Body> {
                       text: "Continue",
                       press: () {
                         print('hello world ');
+                        Navigator.pushNamed(context, OrderHistory.routeName);
+
                         // Navigator.pushNamed(context, ProfileScreen.routeName);
                         // Navigator.pushNamed(context, CartScreen.routeName);
-                        Navigator.pushNamed(context, HomeScreen.routeName);
+                        // Navigator.pushNamed(context, HomeScreen.routeName);
 
                         // Navigator.pushNamed(context, SignInScreen.routeName);
                       },
