@@ -154,7 +154,7 @@ class _CheckoutCardState extends State<CheckoutCard> {
                           'name': 'Eatables ',
                           'order_id': "${response.data['id']}",
                           // Generate order_id using Orders API
-                          'description': jsonEncode(msg),
+                          'description': "ok",
                           'timeout': 180,
                           // in seconds
                           'prefill': {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "592819804061",
+    "project_id": "eatablesuser",
+    "storage_bucket": "eatablesuser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592819804061:android:b2abfc4c6bd0e96bb00174",
+        "android_client_info": {
+          "package_name": "com.example.eatables_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592819804061-95vrcg1l8boqkndd923ag29ptsdisft7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJqAyGfilSme6LEhyo1rcS-J5ODAjIUfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592819804061-95vrcg1l8boqkndd923ag29ptsdisft7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
