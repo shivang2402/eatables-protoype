@@ -4,10 +4,6 @@ import 'package:eatables_app/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/default_button.dart';
-<<<<<<< HEAD
-=======
-import '../../history/order_history.dart';
->>>>>>> 15c260506a3c784204b145b9497177f2e348fd2e
 import '../../home/home_screen.dart';
 
 class Body extends StatefulWidget {
