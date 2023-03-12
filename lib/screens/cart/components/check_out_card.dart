@@ -25,7 +25,9 @@ class _CheckoutCardState extends State<CheckoutCard> {
   final _razorpay = Razorpay();
   String ordersJSON = '';
 
-  var channel = IOWebSocketChannel.connect('ws://localhost:8080');
+  // var channel = IOWebSocketChannel.connect('ws://localhost:8080');
+  var channel = IOWebSocketChannel.connect('ws://10.0.2.2:8080');
+
   var options = {
     'key': razorpayKey,
     'amount': 50000, //in the smallest currency sub-unit.

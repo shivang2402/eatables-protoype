@@ -38,7 +38,10 @@ const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
 // const String baseURL = "http://localhost:3000";
 const String baseURL = "http://10.0.2.2:3000";
+<<<<<<< HEAD
 const String baseWS = "ws://10.0.2.2";
+=======
+>>>>>>> 15c260506a3c784204b145b9497177f2e348fd2e
 
 final otpInputDecoration = InputDecoration(
   contentPadding:
