@@ -1,9 +1,12 @@
+import 'package:eatables_app/provider/cart_provider.dart';
 import 'package:eatables_app/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../provider/product.dart';
 import '../constants.dart';
+import '../screens/home/components/icon_btn_with_counter.dart';
 import '../size_config.dart';
 
 class ProductCard extends StatelessWidget {
@@ -19,6 +22,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cart = context.watch<CartProvider>();
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: SizedBox(
@@ -58,6 +62,15 @@ class ProductCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  IconBtnWithCounter(
+                    size: getProportionateScreenWidth(28),
+                    svgSrc: "assets/icons/Cart Icon.svg",
+                    numOfitem: cart.getQuantity(product.id.toString()),
+                    press: () {
+                      cart.addItem(
+                          product.id.toString(), product.price, product);
+                    },
+                  ),
                   Text(
                     "\$${product.price}",
                     style: TextStyle(
