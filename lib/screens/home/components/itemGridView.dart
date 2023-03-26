@@ -29,14 +29,14 @@ class _ItemGridViewState extends State<ItemGridView> {
     super.initState();
 
     // Create a WebSocket connection and listen for incoming messages
-<<<<<<< HEAD
+// <<<<<<< HEAD
     _channel = IOWebSocketChannel.connect(Uri.parse('ws://10.0.2.2:8080'));
     // Uri.parse('ws://eatables_app:8080'));
-=======
+// =======
     _channel = IOWebSocketChannel.connect(
         // Uri.parse('ws://10.0.2.2:8080'),
         Uri.parse('$baseWS:8080'));
->>>>>>> 3617d24d410f52e2462709504b3f63b9886b2d3c
+// >>>>>>> 3617d24d410f52e2462709504b3f63b9886b2d3c
   }
 
   @override
