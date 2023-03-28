@@ -13,33 +13,52 @@ class OrderHistoryTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: ListTile(
-        shape: const Border.symmetric(
-            horizontal: BorderSide(color: kPrimaryColor)),
-        leading: CircleAvatar(
-          backgroundColor: kPrimaryColor,
-          foregroundColor: Colors.white,
-          child: Text("$index"),
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
         ),
-        title: Text(data.itemsWithQuantity),
-        trailing: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
+        child: Column(
           children: [
-            Text(DateFormat('dd-MM-yyyy ').format(data.date) +
-                DateFormat.jm().format(data.date)),
-            Text("Amount ${data.amount}"),
-          ],
-        ),
-        subtitle: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              "delivered ${data.delivered}",
-              textAlign: TextAlign.left,
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 16,
+              ),
+              leading: CircleAvatar(
+                backgroundColor: kPrimaryColor,
+                foregroundColor: Colors.white,
+                child: Text("$index"),
+              ),
+              title: Text(
+                data.itemsWithQuantity,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  "Delivered ${data.delivered}, To be delivered ${data.tobedelivered}",
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
             ),
-            Text("tobedelivered ${data.tobedelivered}"),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, bottom: 16, right: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    DateFormat('dd MMM yyyy ').format(data.date) +
+                        DateFormat.jm().format(data.date),
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  Text(
+                    "Amount ${data.amount}",
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

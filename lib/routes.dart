@@ -1,5 +1,5 @@
 import 'package:eatables_app/screens/Empty/EmptyScreen.dart';
-import 'package:eatables_app/screens/Notification/notify.dart';
+import 'package:eatables_app/screens/Notification/notification.dart';
 import 'package:eatables_app/screens/cart/cart_screen.dart';
 import 'package:eatables_app/screens/category/category_screen.dart';
 import 'package:eatables_app/screens/complete_profile/complete_profile_screen.dart';
@@ -33,10 +33,11 @@ final Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   EmptyScreen.routeName: (context) => const EmptyScreen(),
-  Notify.routeName: (context) => const Notify(),
+  // Notify.routeName: (context) => const Notify(),
   SetPasswordScreen.routeName: (context) => SetPasswordScreen(),
   CategoryScreen.routeName: (context) => CategoryScreen(),
   SingleCategoryProductsScreen.routeName: (context) =>
       const SingleCategoryProductsScreen(),
-  OrderHistory.routeName: (context) => OrderHistory(),
+  OrderHistory.routeName: (context) => const OrderHistory(),
+  notification.routeName: (context) => const notification(),
 };

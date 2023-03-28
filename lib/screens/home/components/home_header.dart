@@ -1,4 +1,5 @@
 import 'package:eatables_app/provider/cart_provider.dart';
+import 'package:eatables_app/screens/Notification/notification.dart';
 import 'package:eatables_app/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,8 +30,7 @@ class HomeHeader extends StatelessWidget {
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
-            numOfitem: 3,
-            press: () {},
+            press: () => Navigator.pushNamed(context, notification.routeName),
           ),
         ],
       ),
