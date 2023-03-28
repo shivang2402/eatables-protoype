@@ -25,6 +25,14 @@ class UserProvider with ChangeNotifier {
     };
   }
 
+  void clear() {
+    _name = "";
+    _email = "namanrajani16@gmail.com";
+    _contact = "";
+    _password = "";
+    _id = "";
+  }
+
   String get getEmail {
     return _email;
   }
