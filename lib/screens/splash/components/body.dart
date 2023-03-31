@@ -77,9 +77,9 @@ class _BodyState extends State<Body> {
 
                         // Navigator.pushNamed(context, ProfileScreen.routeName);
                         // Navigator.pushNamed(context, CartScreen.routeName);
-                        // Navigator.pushNamed(context, HomeScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.routeName);
 
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        // Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),
                     const Spacer(),
